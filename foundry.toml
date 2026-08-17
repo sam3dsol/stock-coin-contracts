@@ -1,0 +1,19 @@
+[profile.default]
+src            = "src"
+out            = "out"
+test           = "test"
+libs           = ["lib"]
+solc_version   = "0.8.26"
+via_ir         = true   # the factories carry a whole token each; without IR the launch path is stack-too-deep
+# Robinhood chain 4663: Arbitrum Nitro, PUSH0 ok, no TSTORE/MCOPY assumed.
+evm_version    = "shanghai"
+optimizer      = true
+optimizer_runs = 20000
+bytecode_hash  = "none"
+fs_permissions = [{ access = "read", path = "./test/vectors.json" }]
+
+[rpc_endpoints]
+rh = "https://rpc.mainnet.chain.robinhood.com"
+
+[etherscan]
+rh = { key = "unset", url = "https://robinhoodchain.blockscout.com/api", chain = 4663 }
